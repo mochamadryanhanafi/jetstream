@@ -63,7 +63,7 @@ class DashboardController extends Controller
     $totalProjectRunning = 8;
     $totalProjectDone = 15;
 
-    return view('dashboard.admin', compact(
+    return view('dashboard.petugas', compact(
         'totalDraft',
         'totalApproved',
         'totalSent',

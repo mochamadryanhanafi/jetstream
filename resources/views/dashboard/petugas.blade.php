@@ -9,7 +9,7 @@
 <body>
     <div class="d-flex">
         {{-- Sidebar/Navbar --}}
-        @include('layout.navbar') <!-- Pastikan file layout/navbar.blade.php tersedia -->
+        @include('layout.petugas-navbar') <!-- Pastikan file layout/navbar.blade.php tersedia -->
 
         <div class="flex-grow-1 p-3 m-2">
             <div class="mx-auto my-5 row col-9">
