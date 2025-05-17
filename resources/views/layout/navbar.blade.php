@@ -65,7 +65,7 @@
         <a href="/" class="nav-link"><i class="bi bi-globe"></i> Dashboard</a>
       </li>
 
-      <li class="nav-item">
+      <li class="nav-item" id="masterDataMenuItem">
         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="collapse" data-bs-target="#masterDataMenu" aria-expanded="false">
           <i class="bi bi-database"></i> Master Data
         </a>
@@ -110,6 +110,20 @@
         this.classList.add('active');
       });
     });
+  </script>
+
+  <!-- Kondisi akses menu Master Data -->
+  <script>
+    // Contoh variable yang menandakan user punya akses atau tidak
+    const userHasMasterDataAccess = false; // ganti dengan kondisi sebenarnya
+
+    if (!userHasMasterDataAccess) {
+      // Sembunyikan menu Master Data
+      const masterDataMenuItem = document.getElementById('masterDataMenuItem');
+      if (masterDataMenuItem) {
+        masterDataMenuItem.style.display = 'none';
+      }
+    }
   </script>
 
 </body>

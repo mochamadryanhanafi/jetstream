@@ -55,7 +55,22 @@ class DashboardController extends Controller
             abort(403, 'Unauthorized.');
         }
 
-        // Misalnya dashboard petugas belum pakai data
-        return view('dashboard.petugas');
+// Data dummy atau bisa diganti query dari database
+    $totalDraft = 5;
+    $totalApproved = 12;
+    $totalSent = 20;
+    $totalProjectNew = 3;
+    $totalProjectRunning = 8;
+    $totalProjectDone = 15;
+
+    return view('dashboard.admin', compact(
+        'totalDraft',
+        'totalApproved',
+        'totalSent',
+        'totalProjectNew',
+        'totalProjectRunning',
+        'totalProjectDone'
+    ));
     }
+
 }
