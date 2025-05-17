@@ -1,30 +1,21 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DashboardController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-// Semua route yang butuh login dan verifikasi email
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
 
-    // Default dashboard (untuk user biasa)
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    // Dashboard utama, cek role di controller dan tampilkan view sesuai role
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-    // Admin dashboard
-    Route::get('/admin/dashboard', function () {
-        return view('admin.dashboard'); // pastikan view ini ada
-    })->middleware('role:admin')->name('admin.dashboard');
-
-    // Petugas dashboard
-    Route::get('/petugas/dashboard', function () {
-        return view('petugas.dashboard'); // pastikan view ini ada
-    })->middleware('role:petugas')->name('petugas.dashboard');
+    // Kamu bisa tetap buat route khusus kalau mau, tapi tanpa middleware:
+    Route::get('/admin/dashboard', [DashboardController::class, 'admin'])->name('admin.dashboard');
+    Route::get('/petugas/dashboard', [DashboardController::class, 'petugas'])->name('petugas.dashboard');
 });
